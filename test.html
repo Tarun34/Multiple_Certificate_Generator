@@ -14,8 +14,8 @@
   <script src="./FileSaver.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
   <center><input type="file" id="uploadfile" accept=".csv"></center>
-  <center><button id="uploadcnfrm">Upload File</button>
-  <script></center>
+  <button id="uploadcnfrm">Upload File</button>
+  <script>
     const Name=[];
       const uploadcnfrm=document.getElementById('uploadcnfrm').addEventListener('click',() =>{
         Papa.parse(document.getElementById('uploadfile').files[0],
@@ -32,8 +32,9 @@
                   match.toUpperCase()
                 );
               const val = capitalize(results.data[i].Name);
+              const val1 = results.data[i].Date;
               const UserName = results.data[i].Name;
-              const generatePDF = async (name) => {
+              const generatePDF = async (name,date) => {
                 const existingPdfBytes = await fetch("./cert.pdf").then((res) =>
                   res.arrayBuffer()
                 );
@@ -62,6 +63,13 @@
                   font: SanChezFont,
                   color: rgb(0.2, 0.84, 0.67),
                 });
+                firstPage.drawText(date, {
+                  x:75,
+                  y: 255,
+                  size:15,
+                  font: SanChezFont,
+                  color: rgb(0.2, 0.84, 0.67),
+                });
 
                 // Serialize the PDFDocument to bytes (a Uint8Array)
                 const pdfBytes = await pdfDoc.save();
@@ -81,7 +89,7 @@
                 );
                saveAs(file);
               };
-              generatePDF(val);
+              generatePDF(val,val1);
             }
           }
         });
