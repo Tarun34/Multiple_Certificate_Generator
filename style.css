@@ -1,0 +1,35 @@
+body{
+  background-color: skyblue;
+}
+body:hover{
+  background-color: red;
+}
+h3 {
+  color: #2b2726;
+  /* font-size: 5vw; */
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+}
+input{
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+button{
+  font-size: 20px;
+  font-family: 'Bebas Neue', cursive;
+  margin-right:150px;
+}
+input:hover{
+  border-radius: 2px;
+  font-family: cursive;
+  border-color: red;
+  background-color: yellow;
+}
+button:hover{
+  border-color: red;
+  font-family: cursive;
+  background-color: yellow;
+}
